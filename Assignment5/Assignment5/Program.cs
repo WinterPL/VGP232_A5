@@ -9,7 +9,8 @@ namespace Assignment5
             Console.WriteLine("Welcome to the Adventure of Assignment 5!");
             Inventory inv= new Inventory(10);
 
-
+            Item blade = new Item("BLADE", 1,ItemGroup.Equipment);
+            Item key = new Item("Key", 2,ItemGroup.Consumable);
 
 
             // TODO: Create an inventory
