@@ -54,7 +54,16 @@ namespace Assignment5
         /// <returns>True if you find the item, and false if it does not exist.</returns>
         bool TakeItem(string name, out Item found)
         {
-            throw new NotImplementedException();
+            found = null;
+            foreach(var i in items)
+            {
+                if(i.Key.Name == name)
+                {
+                    found = i.Key;
+                    return true;
+                }
+            }
+            return false;
         }
 
         /// <summary>
