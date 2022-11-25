@@ -60,6 +60,18 @@ namespace Assignment5
                 if(i.Key.Name == name)
                 {
                     found = i.Key;
+                    if(i.Key.Amount == 1)
+                    {
+                        items.Remove(i.Key);
+                        availableSlots += 1;
+                        items[i.Key] -= 1;
+                    }
+                    else
+                    {
+                    i.Key.Amount -= 1;
+                    items[i.Key] -= 1;
+                    }
+                
                     return true;
                 }
             }
@@ -76,7 +88,22 @@ namespace Assignment5
             // Add it in the items dictionary and increment it the number if it already exist
             // Reduce the slot once it's been added.
             // returns false if the inventory is full
-            throw new NotImplementedException();
+            if(availableSlots > 0)
+            {
+                foreach (var i in items)
+                {
+                    if (i.Key.Name == item.Name)
+                    {
+                        i.Key.Amount += item.Amount;
+                        items[i.Key] -= item.Amount;
+                        return true;
+                    }
+                }
+                items.Add(item, item.Amount);
+                availableSlots -= 1;
+                return true;
+            }
+            return false;
         }
 
         /// <summary>
@@ -85,8 +112,13 @@ namespace Assignment5
         /// <returns></returns>
         List<Item> ListAllItems()
         {
+            List<Item> itemlist = new List<Item>();
             // use a foreach loop to iterate through the key value pairs and duplicate the item base on the quantity.
-            throw new NotImplementedException();
+            foreach (KeyValuePair<Item, int> i in items)
+            {
+                itemlist.Add(i.Key);
+            }
+            return itemlist;
         }
     }
 }
