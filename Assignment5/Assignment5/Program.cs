@@ -46,28 +46,32 @@ namespace Assignment5
                 Console.WriteLine("{0} has died.", hero.Name);
             }
 
+            Console.WriteLine("\n\n");
+
             Inventory inv= new Inventory(10);
             Console.WriteLine("Inventory inv with " + inv.AvailableSlots + " space");
 
 
             Item blade = new Item("BLADE", 10, ItemGroup.Equipment);
             Console.WriteLine(blade.Name + " x" + blade.Amount+" -"+ blade.Group);
-            Item key = new Item("Key", 1,ItemGroup.Consumable);
+            Item key = new Item("KEY", 1,ItemGroup.Consumable);
             Console.WriteLine(key.Name + " x" + key.Amount + " -"+ key.Group);
 
             inv.AddItem(blade);
+            inv.AddItem(blade);
             inv.AddItem(key);
 
-            Console.WriteLine(inv.AvailableSlots);
+            Console.WriteLine("Available slot: " + inv.AvailableSlots);
 
             Item nothing = new Item("nothing",1,ItemGroup.Consumable);
-            Item nothing2 = new Item("nothing",1,ItemGroup.Consumable);
+            //Item nothing2 = new Item("nothing",1,ItemGroup.Consumable);
             inv.TakeItem("BLADE",out nothing);
-            inv.TakeItem("BLADE",out nothing2);
+            //inv.TakeItem("KEY",out nothing2);
 
             Console.WriteLine("take out :" + nothing.Name + " x" + nothing.Amount + " -" + nothing.Group);
+            //Console.WriteLine("take out :" + nothing2.Name + " x" + nothing2.Amount + " -" + nothing2.Group);
 
-            Console.WriteLine(inv.AvailableSlots);
+            Console.WriteLine("Available slot: " + inv.AvailableSlots);
 
             List<Item> Ilist = inv.ListAllItems();
             foreach(var i in Ilist)
@@ -76,10 +80,6 @@ namespace Assignment5
             }
 
 
-
-            // TODO: Create an inventory
-            // TODO: Add 2 items to the inventory
-            // Verify the number of items in the inventory.
         }
     }
 }
