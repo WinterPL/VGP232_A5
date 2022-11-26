@@ -60,11 +60,10 @@ namespace Assignment5
                 if(i.Key.Name == name)
                 {
                     found = i.Key;
-                    if(i.Key.Amount == 1)
+                    if(items[i.Key] == 1)
                     {
                         items.Remove(i.Key);
                         availableSlots += 1;
-                        items[i.Key] -= 1;
                     }
                     else
                     {

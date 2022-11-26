@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 
 namespace Assignment5
 {
@@ -58,6 +59,23 @@ namespace Assignment5
             inv.AddItem(key);
 
             Console.WriteLine(inv.AvailableSlots);
+
+            Item nothing = new Item("nothing",1,ItemGroup.Consumable);
+            Item nothing2 = new Item("nothing",1,ItemGroup.Consumable);
+            inv.TakeItem("BLADE",out nothing);
+            inv.TakeItem("BLADE",out nothing2);
+
+            Console.WriteLine("take out :" + nothing.Name + " x" + nothing.Amount + " -" + nothing.Group);
+
+            Console.WriteLine(inv.AvailableSlots);
+
+            List<Item> Ilist = inv.ListAllItems();
+            foreach(var i in Ilist)
+            {
+                Console.WriteLine(i.Name + " x" + i.Amount + " -" + i.Group);
+            }
+
+
 
             // TODO: Create an inventory
             // TODO: Add 2 items to the inventory
